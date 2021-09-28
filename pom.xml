@@ -87,8 +87,19 @@
 			<version>2.9.2</version>
 		</dependency>
 
+		<!-- mybatis-plus-generator -->
+		<dependency>
+			<groupId>com.baomidou</groupId>
+			<artifactId>mybatis-plus-generator</artifactId>
+			<version>3.4.1</version>
+		</dependency>
 
-
+		<!-- org.apache.velocity -->
+		<dependency>
+			<groupId>org.apache.velocity</groupId>
+			<artifactId>velocity-engine-core</artifactId>
+			<version>2.3</version>
+		</dependency>
 
 	</dependencies>
 

@@ -11,7 +11,10 @@ import springfox.documentation.spring.web.plugins.Docket;
  * @Author: sw3455
  * @Date: 2021/9/16
  * @Email: sw3455@nyu.edu
+ *
+ * The config of swagger_2
  */
+
 @Configuration
 public class SpringFoxConfig {
     @Bean
