@@ -2,6 +2,7 @@ package edu.nyu.wow.service;
 
 import edu.nyu.wow.entity.Hospital;
 import com.baomidou.mybatisplus.extension.service.IService;
+import edu.nyu.wow.ibo.HospitalIbo;
 
 /**
  * <p>
@@ -13,4 +14,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IHospitalService extends IService<Hospital> {
 
+    void addHospital(HospitalIbo ibo);
 }
