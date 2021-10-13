@@ -53,9 +53,9 @@ public class MyBatisPlusGenerator {
 
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl("jdbc:mysql://database-mysql-wow.c8re9mqtjihh.us-east-2.rds.amazonaws.com:3306/wow");
+        dsc.setUrl("jdbc:oracle:thin:@wow-oracle.c8re9mqtjihh.us-east-2.rds.amazonaws.com:1521:ORCL");
         // dsc.setSchemaName("public");
-        dsc.setDriverName("com.mysql.cj.jdbc.Driver");
+        dsc.setDriverName("oracle.jdbc.OracleDriver");
         dsc.setUsername("admin");
         dsc.setPassword("stony18958122335");
         mpg.setDataSource(dsc);
@@ -116,7 +116,6 @@ public class MyBatisPlusGenerator {
         // templateConfig.setEntity("templates/entity2.java");
         // templateConfig.setService();
         templateConfig.setController(null);
-
         templateConfig.setXml(null);
         mpg.setTemplate(templateConfig);
 
@@ -126,12 +125,13 @@ public class MyBatisPlusGenerator {
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
         //strategy.setSuperEntityClass("你自己的父类实体,没有就不用设置!");
         strategy.setEntityLombokModel(true);
-        strategy.setRestControllerStyle(true);
+        //strategy.setRestControllerStyle(true);
         // 公共父类
         //strategy.setSuperControllerClass("你自己的父类控制器,没有就不用设置!");
         // 写于父类中的公共字段
         strategy.setSuperEntityColumns("id");
-        strategy.setInclude(scanner("表名，多个英文逗号分割").split(","));
+        //要设置生成哪些表 如果不设置就是生成所有的表
+        //strategy.setInclude(scanner("表名，多个英文逗号分割").split(","));
         strategy.setControllerMappingHyphenStyle(true);
         strategy.setTablePrefix(pc.getModuleName() + "_");
         mpg.setStrategy(strategy);
