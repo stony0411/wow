@@ -29,6 +29,7 @@ public class Patient implements Serializable {
     /**
      * PRIMARY KEY AND UNIQUE ID FOR PATIENTS
      */
+    @TableId("PATIENT_ID")
     private Long patientId;
 
     /**
