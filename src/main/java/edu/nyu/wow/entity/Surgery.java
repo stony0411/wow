@@ -14,7 +14,7 @@ import lombok.EqualsAndHashCode;
  * </p>
  *
  * @author MyBatisPlusGenerator
- * @since 2021-10-13
+ * @since 2021-11-24
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -24,22 +24,22 @@ public class Surgery implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
-     * NAME OF THE SURGERY
-     */
-    @TableField("SURGERY_NAME")
-    private String surgeryName;
-
-    /**
      * PRIMARY KEY AND UNIQUE ID OF TREATMENT
      */
     @TableId("TREATMENT_ID")
     private Long treatmentId;
 
     /**
+     * NAME OF THE SURGERY
+     */
+    @TableField("SURGERY_NAME")
+    private String surgeryName;
+
+    /**
      * THE DESCRIPTION OF SURGERY
      */
-    @TableField("SURGERY_DESCRIPTION")
-    private String surgeryDescription;
+    @TableField("DESCRIPTION")
+    private String description;
 
     /**
      * THE DATE OF SURGERY
@@ -50,8 +50,8 @@ public class Surgery implements Serializable {
     /**
      * THE RESULT OF THE SURGERY, SUCCESS OR NOT
      */
-    @TableField("SURGERY_RESULT")
-    private String surgeryResult;
+    @TableField("RESULT")
+    private String result;
 
 
 }

@@ -1,6 +1,6 @@
 package edu.nyu.wow.mapper;
 
-import edu.nyu.wow.entity.InsuranceCoverage;
+import edu.nyu.wow.entity.InsurancePlan;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -9,8 +9,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * </p>
  *
  * @author MyBatisPlusGenerator
- * @since 2021-10-13
+ * @since 2021-11-24
  */
-public interface InsuranceCoverageMapper extends BaseMapper<InsuranceCoverage> {
+public interface InsurancePlanMapper extends BaseMapper<InsurancePlan> {
 
 }

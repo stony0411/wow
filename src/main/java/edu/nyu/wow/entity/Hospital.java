@@ -5,8 +5,6 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import java.time.LocalDateTime;
 import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
-import java.util.Date;
-
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -16,7 +14,7 @@ import lombok.EqualsAndHashCode;
  * </p>
  *
  * @author MyBatisPlusGenerator
- * @since 2021-10-13
+ * @since 2021-11-24
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -29,7 +27,7 @@ public class Hospital implements Serializable {
      * Hospital Primary key and ID
      */
     @TableId("HOSPITAL_ID")
-    private Long hospitalId;
+    private Integer hospitalId;
 
     /**
      * The name of the hospital
@@ -65,7 +63,7 @@ public class Hospital implements Serializable {
      * The zipcode of hospital
      */
     @TableField("ZIPCODE")
-    private Integer zipcode;
+    private String zipcode;
 
     /**
      * The phone number of the hospital
@@ -89,13 +87,13 @@ public class Hospital implements Serializable {
      * TIME TBL CREATED
      */
     @TableField("TBL_CREATED_DT")
-    private Date tblCreatedDt;
+    private LocalDateTime tblCreatedDt;
 
     /**
      * LAST MODIFIED/UPDATED DATE
      */
     @TableField("TBL_LAST_DT")
-    private Date tblLastDt;
+    private LocalDateTime tblLastDt;
 
 
 }

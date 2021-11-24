@@ -14,7 +14,7 @@ import lombok.EqualsAndHashCode;
  * </p>
  *
  * @author MyBatisPlusGenerator
- * @since 2021-10-13
+ * @since 2021-11-24
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -26,8 +26,8 @@ public class AccountType implements Serializable {
     /**
      * UNIQUE ID AND PRIMARY KEY
      */
-    @TableId("ACCOUNT_TYPE_ID")
-    private Integer accountTypeId;
+    @TableId("TYPE_ID")
+    private Integer typeId;
 
     /**
      * EMP/PATIENT/ADMIN

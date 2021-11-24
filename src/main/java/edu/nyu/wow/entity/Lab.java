@@ -14,7 +14,7 @@ import lombok.EqualsAndHashCode;
  * </p>
  *
  * @author MyBatisPlusGenerator
- * @since 2021-10-13
+ * @since 2021-11-24
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -24,16 +24,16 @@ public class Lab implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
+     * PRIMARY KEY AND UNIQUE ID OF TREATMENT
+     */
+    @TableId("TREATMENT_ID")
+    private Integer treatmentId;
+
+    /**
      * NAME OF THE LAB
      */
     @TableField("LAB_NAME")
     private String labName;
-
-    /**
-     * PRIMARY KEY AND UNIQUE ID OF TREATMENT
-     */
-    @TableId("TREATMENT_ID")
-    private Long treatmentId;
 
     /**
      * NAME OF THE TEST PERFORMED

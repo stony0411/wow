@@ -1,5 +1,6 @@
 package edu.nyu.wow.entity;
 
+import java.math.BigDecimal;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.time.LocalDateTime;
@@ -14,7 +15,7 @@ import lombok.EqualsAndHashCode;
  * </p>
  *
  * @author MyBatisPlusGenerator
- * @since 2021-10-13
+ * @since 2021-11-24
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -33,7 +34,7 @@ public class Room implements Serializable {
      * NUMBER OF BEDS IN THIS ROOM
      */
     @TableField("CAPACITY")
-    private Integer capacity;
+    private BigDecimal capacity;
 
     /**
      * WHEHTER THIS ROOM IS HAS EMPTY BED

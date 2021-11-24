@@ -14,7 +14,7 @@ import lombok.EqualsAndHashCode;
  * </p>
  *
  * @author MyBatisPlusGenerator
- * @since 2021-10-13
+ * @since 2021-11-24
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -35,8 +35,17 @@ public class Diagnosis implements Serializable {
     @TableField("DIAGNOSIS_DATE")
     private LocalDateTime diagnosisDate;
 
-    @TableField("DISEASE_ICD_CODE")
-    private Float diseaseIcdCode;
+    @TableField("DISEASE_ID")
+    private Integer diseaseId;
+
+    @TableField("CONSULTING_DOC_ID")
+    private Integer consultingDocId;
+
+    @TableField("FULLTIME_DOC_ID")
+    private Integer fulltimeDocId;
+
+    @TableField("TREATMENT_ID")
+    private Integer treatmentId;
 
     /**
      * TIME TBL CREATED
@@ -49,15 +58,6 @@ public class Diagnosis implements Serializable {
      */
     @TableField("TBL_LAST_DT")
     private LocalDateTime tblLastDt;
-
-    @TableField("CONSULTING_DOC_ID")
-    private Integer consultingDocId;
-
-    @TableField("FULLTIME_DOC_ID")
-    private Integer fulltimeDocId;
-
-    @TableField("TREATMENT_ID")
-    private Long treatmentId;
 
 
 }

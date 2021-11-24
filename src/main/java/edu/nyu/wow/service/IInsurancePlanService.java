@@ -1,6 +1,6 @@
 package edu.nyu.wow.service;
 
-import edu.nyu.wow.entity.InsuranceCoverage;
+import edu.nyu.wow.entity.InsurancePlan;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -9,8 +9,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * </p>
  *
  * @author MyBatisPlusGenerator
- * @since 2021-10-13
+ * @since 2021-11-24
  */
-public interface IInsuranceCoverageService extends IService<InsuranceCoverage> {
+public interface IInsurancePlanService extends IService<InsurancePlan> {
 
 }

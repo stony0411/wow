@@ -14,7 +14,7 @@ import lombok.EqualsAndHashCode;
  * </p>
  *
  * @author MyBatisPlusGenerator
- * @since 2021-10-13
+ * @since 2021-11-24
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -23,14 +23,14 @@ public class Treatment implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @TableField("REG_ID")
-    private Long regId;
-
     /**
      * PRIMARY KEY AND UNIQUE ID OF TREATMENT
      */
     @TableId("TREATMENT_ID")
-    private Long treatmentId;
+    private Integer treatmentId;
+
+    @TableField("REG_ID")
+    private Integer regId;
 
     /**
      * DISCRIMINATOR AND TYPE OF TREATMENT
@@ -47,8 +47,8 @@ public class Treatment implements Serializable {
     /**
      * THE DATETIME TREATMENT GENEREATED
      */
-    @TableField("DATE")
-    private LocalDateTime date;
+    @TableField("TREATMENT_DATE")
+    private LocalDateTime treatmentDate;
 
     /**
      * THE DETAILED  DESCRIPTION OF TREATMENT

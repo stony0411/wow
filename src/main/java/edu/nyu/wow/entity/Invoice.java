@@ -15,7 +15,7 @@ import lombok.EqualsAndHashCode;
  * </p>
  *
  * @author MyBatisPlusGenerator
- * @since 2021-10-13
+ * @since 2021-11-24
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -78,6 +78,9 @@ public class Invoice implements Serializable {
     @TableField("COST_TO_PATIENT")
     private BigDecimal costToPatient;
 
+    @TableField("REG_ID")
+    private Integer regId;
+
     /**
      * TIME TBL CREATED
      */
@@ -89,9 +92,6 @@ public class Invoice implements Serializable {
      */
     @TableField("TBL_LAST_DT")
     private LocalDateTime tblLastDt;
-
-    @TableField("REG_ID")
-    private Long regId;
 
 
 }

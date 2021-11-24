@@ -14,7 +14,7 @@ import lombok.EqualsAndHashCode;
  * </p>
  *
  * @author MyBatisPlusGenerator
- * @since 2021-10-13
+ * @since 2021-11-24
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -32,8 +32,8 @@ public class Appointment implements Serializable {
     /**
      * DATE FOR APT
      */
-    @TableField("DATE")
-    private LocalDateTime date;
+    @TableField("APPOINTMENT_DATE")
+    private LocalDateTime appointmentDate;
 
     /**
      * SPECIFY THE TIME FOR THE APPOINTMENT
@@ -47,6 +47,9 @@ public class Appointment implements Serializable {
     @TableField("SYMPTOMS")
     private String symptoms;
 
+    @TableField("REG_ID")
+    private Integer regId;
+
     /**
      * TIME TBL CREATED
      */
@@ -58,9 +61,6 @@ public class Appointment implements Serializable {
      */
     @TableField("TBL_LAST_DT")
     private LocalDateTime tblLastDt;
-
-    @TableField("REG_ID")
-    private Long regId;
 
 
 }

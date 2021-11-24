@@ -15,7 +15,7 @@ import lombok.EqualsAndHashCode;
  * </p>
  *
  * @author MyBatisPlusGenerator
- * @since 2021-10-13
+ * @since 2021-11-24
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -52,13 +52,16 @@ public class Payment implements Serializable {
      * CARD NUMBER OPTIONAL
      */
     @TableField("CARD_NUMBER")
-    private Long cardNumber;
+    private BigDecimal cardNumber;
 
     /**
      * CARD_EXPIRED_DATE
      */
     @TableField("CARD_EXPIRED_DATE")
     private LocalDateTime cardExpiredDate;
+
+    @TableField("INVOICE_ID")
+    private Integer invoiceId;
 
     /**
      * THE TIME PAYMENT MADE
@@ -77,9 +80,6 @@ public class Payment implements Serializable {
      */
     @TableField("TBL_LAST_DT")
     private LocalDateTime tblLastDt;
-
-    @TableField("INVOICE_ID")
-    private Integer invoiceId;
 
 
 }

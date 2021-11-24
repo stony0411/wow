@@ -14,7 +14,7 @@ import lombok.EqualsAndHashCode;
  * </p>
  *
  * @author MyBatisPlusGenerator
- * @since 2021-10-13
+ * @since 2021-11-24
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -27,7 +27,7 @@ public class Registration implements Serializable {
      * THE PRIMARY KEY AND UNIQUE ID OF REGISTRATION
      */
     @TableId("REG_ID")
-    private Long regId;
+    private Integer regId;
 
     /**
      * THE DATETIME OF REGISTRATION

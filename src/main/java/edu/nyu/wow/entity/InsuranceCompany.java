@@ -14,7 +14,7 @@ import lombok.EqualsAndHashCode;
  * </p>
  *
  * @author MyBatisPlusGenerator
- * @since 2021-10-13
+ * @since 2021-11-24
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -26,17 +26,14 @@ public class InsuranceCompany implements Serializable {
     /**
      * ID AND PRIMARY KEY OF INSURANCE COMPANY
      */
-    @TableId("COMPANY_ID")
-    private Integer companyId;
+    @TableId("INSURANCE_COMPANY_ID")
+    private Integer insuranceCompanyId;
 
     /**
      * THE NAME OF THE COMPANY
      */
     @TableField("COMPANY_NAME")
     private String companyName;
-
-    @TableField("PATIENT_ID")
-    private Integer patientId;
 
     /**
      * DATE TABLE CREATED

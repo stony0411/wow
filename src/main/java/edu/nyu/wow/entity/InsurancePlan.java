@@ -18,41 +18,38 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@TableName("DISEASE")
-public class Disease implements Serializable {
+@TableName("INSURANCE_PLAN")
+public class InsurancePlan implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId("DISEASE_ID")
-    private Integer diseaseId;
+    /**
+     * UNIQUE ID AND PRIMARY KEY
+     */
+    @TableId("PLAN_ID")
+    private Integer planId;
 
     /**
-     * ID code of disease internationally
+     * NAME OF THE PLAN
      */
-    @TableField("ICD_CODE")
-    private String icdCode;
+    @TableField("PLAN_NAME")
+    private String planName;
 
     /**
-     * Name of the disease
+     * DETAILED PLAN STORED AT INSURANCE COMPANY
      */
-    @TableField("DISEASE_NAME")
-    private String diseaseName;
+    @TableField("PLAN_SUMMARY")
+    private String planSummary;
 
-    /**
-     * THE TYPE OF DISEASE
-     */
-    @TableField("DISEASE_TYPE")
-    private String diseaseType;
+    @TableField("PATIENT_ID")
+    private Integer patientId;
 
-    /**
-     * TIME TBL CREATED
-     */
+    @TableField("COMPANY_ID")
+    private Integer companyId;
+
     @TableField("TBL_CREATED_DT")
     private LocalDateTime tblCreatedDt;
 
-    /**
-     * LAST MODIFIED/UPDATED DATE
-     */
     @TableField("TBL_LAST_DT")
     private LocalDateTime tblLastDt;
 

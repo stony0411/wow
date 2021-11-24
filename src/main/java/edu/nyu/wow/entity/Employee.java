@@ -1,6 +1,5 @@
 package edu.nyu.wow.entity;
 
-import java.math.BigDecimal;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.time.LocalDateTime;
@@ -15,7 +14,7 @@ import lombok.EqualsAndHashCode;
  * </p>
  *
  * @author MyBatisPlusGenerator
- * @since 2021-10-13
+ * @since 2021-11-24
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -70,7 +69,7 @@ public class Employee implements Serializable {
      * WHETHER THIS EMPLOYEE IS ON JOB
      */
     @TableField("ON_JOB")
-    private BigDecimal onJob;
+    private String onJob;
 
     /**
      * THE SHIFT TIME FOR THEM
@@ -78,11 +77,8 @@ public class Employee implements Serializable {
     @TableField("SHIFT_TIME")
     private String shiftTime;
 
-    /**
-     * LAST MODIFIED/UPDATED DATE
-     */
-    @TableField("TBL_LAST_DT")
-    private LocalDateTime tblLastDt;
+    @TableField("DEPT_NO")
+    private Integer deptNo;
 
     /**
      * TIME TBL CREATED
@@ -90,8 +86,11 @@ public class Employee implements Serializable {
     @TableField("TBL_CREATED_DT")
     private LocalDateTime tblCreatedDt;
 
-    @TableField("DEPT_NO")
-    private Integer deptNo;
+    /**
+     * LAST MODIFIED/UPDATED DATE
+     */
+    @TableField("TBL_LAST_DT")
+    private LocalDateTime tblLastDt;
 
 
 }

@@ -15,12 +15,12 @@ import lombok.EqualsAndHashCode;
  * </p>
  *
  * @author MyBatisPlusGenerator
- * @since 2021-10-13
+ * @since 2021-11-24
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@TableName("INSURANCE_COVERAGE")
-public class InsuranceCoverage implements Serializable {
+@TableName("COVERAGE")
+public class Coverage implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -42,6 +42,12 @@ public class InsuranceCoverage implements Serializable {
     @TableField("AMOUNT_COVERD")
     private BigDecimal amountCoverd;
 
+    @TableField("COMPANY_ID")
+    private Integer companyId;
+
+    @TableField("PAYMENT_ID")
+    private Integer paymentId;
+
     /**
      * DATE TABLE CREATED
      */
@@ -53,12 +59,6 @@ public class InsuranceCoverage implements Serializable {
      */
     @TableField("TBL_LAST_DT")
     private LocalDateTime tblLastDt;
-
-    @TableField("COMPANY_ID")
-    private Integer companyId;
-
-    @TableField("PAYMENT_ID")
-    private Integer paymentId;
 
 
 }
