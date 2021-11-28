@@ -1,6 +1,8 @@
 package edu.nyu.wow.vo;
 
 import lombok.Data;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.math.BigDecimal;
 

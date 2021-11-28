@@ -1,4 +1,4 @@
-package edu.nyu.wow.bo;
+package edu.nyu.wow.dto;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -11,7 +11,7 @@ import lombok.Data;
  */
 
 @Data
-public class HospitalBo {
+public class HospitalDto {
 
     /**
      * Hospital Primary key and ID

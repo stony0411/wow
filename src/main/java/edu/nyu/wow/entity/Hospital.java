@@ -1,12 +1,17 @@
 package edu.nyu.wow.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.time.LocalDateTime;
 import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
+import java.util.Date;
+
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 /**
  * <p>
@@ -19,6 +24,8 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @TableName("HOSPITAL")
+@NoArgsConstructor
+@AllArgsConstructor
 public class Hospital implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -26,8 +33,8 @@ public class Hospital implements Serializable {
     /**
      * Hospital Primary key and ID
      */
-    @TableId("HOSPITAL_ID")
-    private Integer hospitalId;
+    @TableId(value = "HOSPITAL_ID", type = IdType.AUTO)
+    private Long hospitalId;
 
     /**
      * The name of the hospital
@@ -87,13 +94,13 @@ public class Hospital implements Serializable {
      * TIME TBL CREATED
      */
     @TableField("TBL_CREATED_DT")
-    private LocalDateTime tblCreatedDt;
+    private Date tblCreatedDt;
 
     /**
      * LAST MODIFIED/UPDATED DATE
      */
     @TableField("TBL_LAST_DT")
-    private LocalDateTime tblLastDt;
+    private Date tblLastDt;
 
 
 }

@@ -1,7 +1,12 @@
 package edu.nyu.wow.service;
 
+import edu.nyu.wow.bo.HospitalBo;
 import edu.nyu.wow.entity.Hospital;
 import com.baomidou.mybatisplus.extension.service.IService;
+import edu.nyu.wow.ibo.HospitalIbo;
+import edu.nyu.wow.meta.SimpleResponse;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,4 +18,9 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IHospitalService extends IService<Hospital> {
 
+    SimpleResponse<String> addHospital(HospitalIbo ibo);
+
+    SimpleResponse<List<HospitalBo>> listHospital();
+
+    SimpleResponse<HospitalBo> hospitalDetail(Long hospitalId);
 }

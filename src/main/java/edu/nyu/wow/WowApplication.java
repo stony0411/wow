@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
@@ -22,7 +23,7 @@ import java.net.UnknownHostException;
 @EnableTransactionManagement
 @EnableSwagger2
 @MapperScan("edu.nyu.wow.mapper")
-public class WowApplication {
+public class WowApplication extends WebMvcAutoConfiguration {
 	public static final Logger log = LoggerFactory.getLogger(WowApplication.class);
 	public static void main(String[] args) throws UnknownHostException {
 		ApplicationContext ctx = SpringApplication.run(WowApplication.class, args);
