@@ -23,4 +23,6 @@ public interface IHospitalService extends IService<Hospital> {
     SimpleResponse<List<HospitalBo>> listHospital();
 
     SimpleResponse<HospitalBo> hospitalDetail(Long hospitalId);
+
+    SimpleResponse<List<HospitalBo>> searchHospital(HospitalIbo hospitalIbo);
 }

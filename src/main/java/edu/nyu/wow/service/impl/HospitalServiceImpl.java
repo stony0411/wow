@@ -9,6 +9,7 @@ import edu.nyu.wow.meta.SimpleResponse;
 import edu.nyu.wow.service.IHospitalService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import net.bytebuddy.asm.MemberSubstitution;
+import org.apache.commons.lang3.StringUtils;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,5 +47,14 @@ public class HospitalServiceImpl extends ServiceImpl<HospitalMapper, Hospital> i
     @Override
     public SimpleResponse<HospitalBo> hospitalDetail(Long hospitalId) {
         return new SimpleResponse<>(modelMapper.map(getById(hospitalId), HospitalBo.class)) ;
+    }
+
+    @Override
+    public SimpleResponse<List<HospitalBo>> searchHospital(HospitalIbo hospitalIbo) {
+        QueryWrapper<Hospital> wrapper = new QueryWrapper<>();
+        Hospital hospital = modelMapper.map(hospitalIbo, Hospital.class);
+        wrapper.setEntity(hospital);
+        List<Hospital> hospitals = list(wrapper);
+        return new SimpleResponse<>(modelMapper.map(hospitals,new TypeToken<List<HospitalBo>>(){}.getType()));
     }
 }

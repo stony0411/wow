@@ -1,17 +1,12 @@
 package edu.nyu.wow.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableName;
-import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.*;
+
 import java.time.LocalDateTime;
-import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
 import java.util.Date;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 /**
  * <p>
@@ -39,7 +34,7 @@ public class Hospital implements Serializable {
     /**
      * The name of the hospital
      */
-    @TableField("HOSPITAL_NAME")
+    @TableField(value = "HOSPITAL_NAME", condition = "%s LIKE CONCAT(CONCAT('%%',#{%s}),'%%')")
     private String hospitalName;
 
     /**
@@ -57,13 +52,13 @@ public class Hospital implements Serializable {
     /**
      * CITY
      */
-    @TableField("CITY")
+    @TableField(value = "CITY", condition = SqlCondition.EQUAL)
     private String city;
 
     /**
      * STATE
      */
-    @TableField("STATE")
+    @TableField(value = "STATE", condition = SqlCondition.EQUAL)
     private String state;
 
     /**
