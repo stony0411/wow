@@ -31,11 +31,6 @@
 			<optional>true</optional>
 		</dependency>
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
-
 		<!-- LomBok -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -136,10 +131,11 @@
 			<version>1.9.13</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
 		<dependency>
-			<groupId>com.auth0</groupId>
-			<artifactId>java-jwt</artifactId>
-			<version>3.12.1</version>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.78</version>
 		</dependency>
 
 

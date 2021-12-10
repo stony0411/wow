@@ -7,5 +7,6 @@ package edu.nyu.wow.enums;
  */
 public enum ResponseStatus {
     SUCCESS,
-    ERROR
+    ERROR,
+    NOT_LOGIN
 }
