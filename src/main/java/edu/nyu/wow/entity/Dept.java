@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import java.time.LocalDateTime;
 import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
+import java.util.Date;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -54,13 +56,13 @@ public class Dept implements Serializable {
      * TIME TBL CREATED
      */
     @TableField("TBL_CREATED_DT")
-    private LocalDateTime tblCreatedDt;
+    private Date tblCreatedDt;
 
     /**
      * LAST MODIFIED/UPDATED DATE
      */
     @TableField("TBL_LAST_DT")
-    private LocalDateTime tblLastDt;
+    private Date tblLastDt;
 
 
 }

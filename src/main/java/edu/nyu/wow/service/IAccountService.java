@@ -2,6 +2,7 @@ package edu.nyu.wow.service;
 
 import edu.nyu.wow.entity.Account;
 import com.baomidou.mybatisplus.extension.service.IService;
+import edu.nyu.wow.entity.User;
 
 /**
  * <p>
@@ -13,4 +14,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IAccountService extends IService<Account> {
 
+    User findByUsername(String username);
 }
