@@ -24,7 +24,7 @@ public class SessionController {
     @Autowired
     IAccountService accountService;
 
-    @PostMapping("login")
+    @PostMapping("/login")
     public SimpleResponse<String> login(@RequestBody User user, HttpSession session) {
         User backEndUser = accountService.findByUsername(user.getUsername());
         if (Objects.isNull(backEndUser)) {
