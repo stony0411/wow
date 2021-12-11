@@ -4,7 +4,9 @@ import com.alibaba.fastjson.JSONObject;
 import edu.nyu.wow.entity.User;
 import edu.nyu.wow.enums.ResponseStatus;
 import edu.nyu.wow.meta.SimpleResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.util.AntPathMatcher;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.servlet.FilterChain;
@@ -13,6 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * @Author: sw3455
@@ -21,9 +25,13 @@ import java.io.PrintWriter;
  */
 @Component
 public class LoginFilter extends OncePerRequestFilter {
+
+
+
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         // Login do not need to intercept
+        System.out.println(request.getRequestURI());
         if ("/login".equals(request.getRequestURI())) {
             filterChain.doFilter(request, response);
             return;
@@ -45,6 +53,20 @@ public class LoginFilter extends OncePerRequestFilter {
         out.print(JSONObject.toJSON(simpleResponse));
         out.flush();
         out.close();
+    }
+
+    @Override
+    protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {
+        AntPathMatcher pathMatcher = new AntPathMatcher();
+        Collection<String> byPassUris = new ArrayList<>();
+        byPassUris.add("/v2/api-docs");
+        byPassUris.add("/configuration/ui");
+        byPassUris.add("/swagger-resources/**");
+        byPassUris.add("/configuration/security");
+        byPassUris.add("/swagger-ui.html");
+        byPassUris.add("/webjars/**");
+        return byPassUris.stream()
+                .anyMatch(p -> pathMatcher.match(p, request.getServletPath()));
     }
 }
 
