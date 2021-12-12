@@ -41,7 +41,7 @@ public class HospitalController {
 
     @GetMapping("hospital/{hospitalId}")
     public SimpleResponse<HospitalDto> hospitalDetail(@PathVariable("hospitalId") Long hospitalId) {
-        HospitalDto hospitalDto = modelMapper.map(hospitalService.hospitalDetail(hospitalId), HospitalDto.class);
+        HospitalDto hospitalDto = modelMapper.map(hospitalService.hospitalDetail(hospitalId).getData(), HospitalDto.class);
         return new SimpleResponse<>(hospitalDto);
     }
 

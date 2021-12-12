@@ -46,7 +46,12 @@ public class HospitalServiceImpl extends ServiceImpl<HospitalMapper, Hospital> i
 
     @Override
     public SimpleResponse<HospitalBo> hospitalDetail(Long hospitalId) {
-        return new SimpleResponse<>(modelMapper.map(getById(hospitalId), HospitalBo.class)) ;
+        Hospital hospital = new Hospital();
+        hospital.setHospitalId(hospitalId);
+        QueryWrapper<Hospital> wrapper = new QueryWrapper<>();
+        wrapper.setEntity(hospital);
+        HospitalBo hospitalBo = modelMapper.map(getOne(wrapper), HospitalBo.class);
+        return new SimpleResponse<>(hospitalBo) ;
     }
 
     @Override
