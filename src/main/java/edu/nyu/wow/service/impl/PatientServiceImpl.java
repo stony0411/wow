@@ -48,4 +48,10 @@ public class PatientServiceImpl extends ServiceImpl<PatientMapper, Patient> impl
         return new SimpleResponse<>(patientBo);
     }
 
+    @Override
+    public SimpleResponse<PatientBo> patientDetail(Long patientId) {
+        Patient patient = getById(patientId);
+        return new SimpleResponse<>(modelMapper.map(patient, PatientBo.class));
+    }
+
 }

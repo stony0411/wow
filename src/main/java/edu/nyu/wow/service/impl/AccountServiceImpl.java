@@ -1,6 +1,7 @@
 package edu.nyu.wow.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import edu.nyu.wow.entity.Account;
 import edu.nyu.wow.entity.User;
 import edu.nyu.wow.enums.UserRole;
@@ -8,6 +9,7 @@ import edu.nyu.wow.mapper.AccountMapper;
 import edu.nyu.wow.service.IAccountService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import edu.nyu.wow.dao.vo.UserVo;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
@@ -46,15 +48,10 @@ public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account> impl
 
     @Override
     public void updateUserId(User user) {
-        Account account = Account.builder()
-                .accountName(user.getUsername())
-                .password(user.getPassword())
-                .typeId(user.getRole())
-                .userId(user.getUserId())
-                .build();
-        QueryWrapper<Account> wrapper = new QueryWrapper<>();
-        wrapper.eq("account_id", user.getUserId());
-        update(account, wrapper);
+        UpdateWrapper<Account> wrapper = new UpdateWrapper<>();
+        wrapper.eq("account_name", user.getUsername());
+        wrapper.set("user_id", user.getUserId());
+        update(wrapper);
     }
 
 }

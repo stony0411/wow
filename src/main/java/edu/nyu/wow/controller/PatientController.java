@@ -1,6 +1,7 @@
 package edu.nyu.wow.controller;
 
 import edu.nyu.wow.dao.bo.PatientBo;
+import edu.nyu.wow.dao.dto.HospitalDto;
 import edu.nyu.wow.dao.dto.PatientDto;
 import edu.nyu.wow.dao.ibo.PatientIbo;
 import edu.nyu.wow.dao.vo.PatientVo;
@@ -12,10 +13,7 @@ import edu.nyu.wow.service.IAccountService;
 import edu.nyu.wow.service.IPatientService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @Author: sw3455
@@ -61,5 +59,18 @@ public class PatientController {
         PatientIbo ibo = modelMapper.map(vo, PatientIbo.class);
         PatientDto dto = modelMapper.map(patientService.updatePatient(ibo).getData(), PatientDto.class) ;
         return new SimpleResponse<>(dto);
+    }
+
+    @GetMapping("/{patient}")
+    public SimpleResponse<PatientDto> patientDetail(@PathVariable("patient") Long patientId) {
+        PatientDto patientDto = modelMapper.map(patientService.patientDetail(patientId).getData(), PatientDto.class);
+        return new SimpleResponse<>(patientDto);
+    }
+
+    @GetMapping("/myPatientProfile")
+    public SimpleResponse<PatientDto> myPatientProfile() {
+        User user = RequestContext.getCurrentUser();
+        PatientDto patientDto = modelMapper.map(patientService.patientDetail(user.getUserId()).getData(), PatientDto.class);
+        return new SimpleResponse<>(patientDto);
     }
 }

@@ -20,4 +20,5 @@ public interface IPatientService extends IService<Patient> {
 
     SimpleResponse<PatientBo> updatePatient(PatientIbo patientIbo);
 
+    SimpleResponse<PatientBo> patientDetail(Long patientId);
 }

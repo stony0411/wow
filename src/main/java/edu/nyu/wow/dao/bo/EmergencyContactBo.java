@@ -1,15 +1,13 @@
-package edu.nyu.wow.entity;
+package edu.nyu.wow.dao.bo;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableName;
-import com.baomidou.mybatisplus.annotation.TableId;
-import java.time.LocalDateTime;
 import com.baomidou.mybatisplus.annotation.TableField;
-import java.io.Serializable;
-import java.util.Date;
-
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import java.io.Serializable;
+import java.util.Date;
 
 /**
  * <p>
@@ -21,45 +19,44 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@TableName("EMERGENCY_CONTACT")
-public class EmergencyContact implements Serializable {
+public class EmergencyContactBo implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     /**
      * THE PRIMARY KEY AND UNIQUE ID FOR PATIENTS EMERGENCY CONTACT
      */
-    @TableId(value = "CONTACT_ID", type = IdType.AUTO)
+
     private Long contactId;
 
-    @TableField("CONTACT_NAME")
+
     private String contactName;
 
     /**
      * THE NUMBER OFTHE EMERGENCY CONTACT PERSON
      */
-    @TableField("CONTACT_NUMBER")
+
     private Long contactNumber;
 
     /**
      * TYPE OF RELATIONSHIP WITH THE PATIENT
      */
-    @TableField("RELATION")
+
     private String relation;
 
-    @TableField("PATIENT_ID")
+
     private Long patientId;
 
     /**
      * TIME TBL CREATED
      */
-    @TableField("TBL_CREATED_DT")
+
     private Date tblCreatedDt;
 
     /**
      * LAST MODIFIED/UPDATED DATE
      */
-    @TableField("TBL_LAST_DT")
+
     private Date tblLastDt;
 
 
