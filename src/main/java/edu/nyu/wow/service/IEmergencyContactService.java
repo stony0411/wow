@@ -1,7 +1,12 @@
 package edu.nyu.wow.service;
 
+import edu.nyu.wow.dao.bo.EmergencyContactBo;
+import edu.nyu.wow.dao.ibo.EmergencyContactIbo;
 import edu.nyu.wow.entity.EmergencyContact;
 import com.baomidou.mybatisplus.extension.service.IService;
+import edu.nyu.wow.meta.SimpleResponse;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,4 +18,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IEmergencyContactService extends IService<EmergencyContact> {
 
+    EmergencyContactBo add(EmergencyContactIbo ibo);
+
+    List<EmergencyContactBo> list(Long userId);
 }

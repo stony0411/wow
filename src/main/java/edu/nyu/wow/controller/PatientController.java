@@ -1,19 +1,29 @@
 package edu.nyu.wow.controller;
 
+import edu.nyu.wow.dao.bo.EmergencyContactBo;
 import edu.nyu.wow.dao.bo.PatientBo;
+import edu.nyu.wow.dao.dto.EmergencyContactDto;
 import edu.nyu.wow.dao.dto.HospitalDto;
 import edu.nyu.wow.dao.dto.PatientDto;
+import edu.nyu.wow.dao.ibo.EmergencyContactIbo;
 import edu.nyu.wow.dao.ibo.PatientIbo;
+import edu.nyu.wow.dao.vo.EmergencyContactVo;
 import edu.nyu.wow.dao.vo.PatientVo;
+import edu.nyu.wow.entity.EmergencyContact;
 import edu.nyu.wow.entity.User;
 import edu.nyu.wow.enums.ResponseStatus;
 import edu.nyu.wow.meta.RequestContext;
 import edu.nyu.wow.meta.SimpleResponse;
 import edu.nyu.wow.service.IAccountService;
+import edu.nyu.wow.service.IEmergencyContactService;
 import edu.nyu.wow.service.IPatientService;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import javax.websocket.server.PathParam;
+import java.util.List;
 
 /**
  * @Author: sw3455
@@ -32,6 +42,9 @@ public class PatientController {
 
     @Autowired
     IAccountService accountService;
+
+    @Autowired
+    IEmergencyContactService emergencyContactService;
 
     @PostMapping("/addProfile")
     public SimpleResponse<PatientDto> addProfile(@RequestBody PatientVo vo) {
@@ -72,5 +85,29 @@ public class PatientController {
         User user = RequestContext.getCurrentUser();
         PatientDto patientDto = modelMapper.map(patientService.patientDetail(user.getUserId()).getData(), PatientDto.class);
         return new SimpleResponse<>(patientDto);
+    }
+
+    @PostMapping("/addMyEmergencyContact")
+    public SimpleResponse<EmergencyContactDto> addMyEmergencyContact(@RequestBody EmergencyContactVo vo) {
+        User user = RequestContext.getCurrentUser();
+        EmergencyContactIbo ibo = modelMapper.map(vo, EmergencyContactIbo.class);
+        ibo.setPatientId(user.getUserId());
+        EmergencyContactDto emergencyContactDto = modelMapper.map(emergencyContactService.add(ibo), EmergencyContactDto.class);
+        return new SimpleResponse<>(emergencyContactDto);
+    }
+
+    @GetMapping("/getMyEmergencyContact")
+    public SimpleResponse<List<EmergencyContactDto>> getMyEmergencyContact() {
+        User user = RequestContext.getCurrentUser();
+        List<EmergencyContactBo> bos = emergencyContactService.list(user.getUserId());
+        List<EmergencyContactDto> dtos = modelMapper.map(bos, new TypeToken<List<EmergencyContactDto>>(){}.getType());
+        return new SimpleResponse<>(dtos);
+    }
+
+    @GetMapping("/getEmergencyContact/{patient}")
+    public SimpleResponse<List<EmergencyContactDto>> getEmergencyContact(@PathVariable("patient") Long patientId) {
+        List<EmergencyContactBo> bos = emergencyContactService.list(patientId);
+        List<EmergencyContactDto> dtos = modelMapper.map(bos, new TypeToken<List<EmergencyContactDto>>(){}.getType());
+        return new SimpleResponse<>(dtos);
     }
 }

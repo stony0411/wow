@@ -20,13 +20,6 @@ public class EmergencyContactDto implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    /**
-     * THE PRIMARY KEY AND UNIQUE ID FOR PATIENTS EMERGENCY CONTACT
-     */
-
-    private Long contactId;
-
-
     private String contactName;
 
     /**
