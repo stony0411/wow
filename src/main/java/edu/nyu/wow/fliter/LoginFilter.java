@@ -3,6 +3,7 @@ package edu.nyu.wow.fliter;
 import com.alibaba.fastjson.JSONObject;
 import edu.nyu.wow.entity.User;
 import edu.nyu.wow.enums.ResponseStatus;
+import edu.nyu.wow.meta.RequestContext;
 import edu.nyu.wow.meta.SimpleResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -31,15 +32,17 @@ public class LoginFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         // Login do not need to intercept
-        System.out.println(request.getRequestURI());
         if ("/login".equals(request.getRequestURI())) {
             filterChain.doFilter(request, response);
             return;
         }
 
+
+
         // Already Login
         User user = (User) request.getSession().getAttribute("user");
         if (user != null) {
+            System.out.println(RequestContext.getCurrentUser() + " is visiting url: " + request.getRequestURI());
             filterChain.doFilter(request, response);
             return;
         }
@@ -49,7 +52,6 @@ public class LoginFilter extends OncePerRequestFilter {
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
-        // 设置响应内容，结束请求
         out.print(JSONObject.toJSON(simpleResponse));
         out.flush();
         out.close();
@@ -65,6 +67,7 @@ public class LoginFilter extends OncePerRequestFilter {
         byPassUris.add("/configuration/security");
         byPassUris.add("/swagger-ui.html");
         byPassUris.add("/webjars/**");
+        byPassUris.add("/csrf");
         return byPassUris.stream()
                 .anyMatch(p -> pathMatcher.match(p, request.getServletPath()));
     }

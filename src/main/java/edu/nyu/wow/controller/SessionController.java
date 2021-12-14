@@ -2,8 +2,10 @@ package edu.nyu.wow.controller;
 
 import edu.nyu.wow.entity.User;
 import edu.nyu.wow.enums.ResponseStatus;
+import edu.nyu.wow.meta.RequestContext;
 import edu.nyu.wow.meta.SimpleResponse;
 import edu.nyu.wow.service.IAccountService;
+import edu.nyu.wow.vo.UserVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,14 +27,15 @@ public class SessionController {
     IAccountService accountService;
 
     @PostMapping("/login")
-    public SimpleResponse<String> login(@RequestBody User user, HttpSession session) {
+    public SimpleResponse<String> login(@RequestBody UserVo user, HttpSession session) {
         User backEndUser = accountService.findByUsername(user.getUsername());
         if (Objects.isNull(backEndUser)) {
             return new SimpleResponse<>("Can not find username", ResponseStatus.ERROR);
         }
 
         if (backEndUser.getPassword().equals(user.getPassword())) {
-            session.setAttribute("user", user);
+            session.setAttribute("user", backEndUser);
+            System.out.println(RequestContext.getCurrentUser() + " loged in.");
             return new SimpleResponse<>("Login Successfully", ResponseStatus.SUCCESS);
         }
 
@@ -41,6 +44,7 @@ public class SessionController {
 
     @GetMapping("/logout")
     public SimpleResponse<String> logout(HttpSession session) {
+        System.out.println(RequestContext.getCurrentUser() + " loged out.");
         session.removeAttribute("user");
         return new SimpleResponse<>("Logout Successfully", ResponseStatus.SUCCESS);
     }

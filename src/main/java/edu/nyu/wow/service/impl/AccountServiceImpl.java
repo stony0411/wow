@@ -33,7 +33,7 @@ public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account> impl
         if (Objects.isNull(account)) {
             return null;
         }
-        return new User(account.getAccountName(), account.getPassword(), account.getTypeId());
+        return new User(account.getAccountName(), account.getPassword(), account.getTypeId(), account.getUserId());
     }
 
 }

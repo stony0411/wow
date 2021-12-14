@@ -46,6 +46,9 @@ public class Account implements Serializable {
     @TableField("TYPE_ID")
     private Integer typeId;
 
+    @TableField("USER_ID")
+    private Long userId;
+
     /**
      * TIME TBL CREATED
      */
