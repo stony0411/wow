@@ -46,6 +46,7 @@ public class PatientController {
         PatientBo bo = patientService.addPatient(ibo).getData();
         // add to user
         user.setUserId(bo.getPatientId());
+        accountService.updateUserId(user);
         PatientDto dto = modelMapper.map(bo, PatientDto.class) ;
         return new SimpleResponse<>(dto);
     }
