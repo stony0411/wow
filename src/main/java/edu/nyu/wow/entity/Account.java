@@ -1,5 +1,6 @@
 package edu.nyu.wow.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.time.LocalDateTime;
@@ -7,6 +8,7 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
 import java.util.Date;
 
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -19,6 +21,7 @@ import lombok.EqualsAndHashCode;
  * @since 2021-11-24
  */
 @Data
+@Builder
 @EqualsAndHashCode(callSuper = false)
 @TableName("ACCOUNT")
 public class Account implements Serializable {
@@ -28,7 +31,7 @@ public class Account implements Serializable {
     /**
      * UNIQUE ID AND PRIMARY KEY
      */
-    @TableId("ACCOUNT_ID")
+    @TableId(value = "ACCOUNT_ID", type = IdType.AUTO)
     private Integer accountId;
 
     /**

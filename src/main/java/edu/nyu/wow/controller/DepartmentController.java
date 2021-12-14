@@ -1,12 +1,5 @@
 package edu.nyu.wow.controller;
 
-import edu.nyu.wow.ibo.HospitalIbo;
-import edu.nyu.wow.meta.SimpleResponse;
-import edu.nyu.wow.service.IDeptService;
-import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 

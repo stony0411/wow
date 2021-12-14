@@ -1,17 +1,13 @@
 package edu.nyu.wow.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import edu.nyu.wow.bo.HospitalBo;
+import edu.nyu.wow.dao.bo.HospitalBo;
 import edu.nyu.wow.entity.Hospital;
-import edu.nyu.wow.entity.User;
-import edu.nyu.wow.ibo.HospitalIbo;
+import edu.nyu.wow.dao.ibo.HospitalIbo;
 import edu.nyu.wow.mapper.HospitalMapper;
-import edu.nyu.wow.meta.RequestContext;
 import edu.nyu.wow.meta.SimpleResponse;
 import edu.nyu.wow.service.IHospitalService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import net.bytebuddy.asm.MemberSubstitution;
-import org.apache.commons.lang3.StringUtils;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,10 +29,9 @@ public class HospitalServiceImpl extends ServiceImpl<HospitalMapper, Hospital> i
     ModelMapper modelMapper;
 
     @Override
-    public SimpleResponse<String> addHospital(HospitalIbo ibo) {
+    public void addHospital(HospitalIbo ibo) {
         Hospital hospital = modelMapper.map(ibo, Hospital.class);
         save(hospital);
-        return new SimpleResponse<>();
     }
 
     @Override

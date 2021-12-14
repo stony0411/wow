@@ -1,8 +1,7 @@
-package edu.nyu.wow.bo;
+package edu.nyu.wow.dao.ibo;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import lombok.Data;
+
+import lombok.*;
 
 /**
  * @Author: yw5211
@@ -11,12 +10,7 @@ import lombok.Data;
  */
 
 @Data
-public class HospitalBo {
-
-    /**
-     * Hospital Primary key and ID
-     */
-    private Long hospitalId;
+public class HospitalIbo {
 
     /**
      * The name of the hospital
@@ -46,7 +40,7 @@ public class HospitalBo {
     /**
      * The zipcode of hospital
      */
-    private Integer zipcode;
+    private String zipcode;
 
     /**
      * The phone number of the hospital

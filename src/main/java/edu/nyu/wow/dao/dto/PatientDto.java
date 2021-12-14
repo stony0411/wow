@@ -1,8 +1,8 @@
-package edu.nyu.wow.vo;
+package edu.nyu.wow.dao.dto;
 
 import lombok.Data;
 
-import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * @Author: sw3455
@@ -10,7 +10,8 @@ import java.math.BigDecimal;
  * @Email: sw3455@nyu.edu
  */
 @Data
-public class PatientVo {
+public class PatientDto {
+
     /**
      * FIRST NAME OF PATIENT
      */
@@ -44,7 +45,7 @@ public class PatientVo {
     /**
      * ZIPCODE
      */
-    private Integer zipcode;
+    private String zipcode;
 
     /**
      * PATIENT PHONE NUMBER
@@ -74,10 +75,11 @@ public class PatientVo {
     /**
      * NAME OF INSURANCE PROVIDER OF PATIENT
      */
-    private String insuranceProvider;
+    private Long insuranceProvider;
 
     /**
      * INSURANCE NUMBER OF THE PATIENT
      */
     private Long insuranceNumber;
+
 }

@@ -3,6 +3,8 @@ package edu.nyu.wow.service;
 import edu.nyu.wow.entity.Account;
 import com.baomidou.mybatisplus.extension.service.IService;
 import edu.nyu.wow.entity.User;
+import edu.nyu.wow.enums.UserRole;
+import edu.nyu.wow.dao.vo.UserVo;
 
 /**
  * <p>
@@ -15,4 +17,8 @@ import edu.nyu.wow.entity.User;
 public interface IAccountService extends IService<Account> {
 
     User findByUsername(String username);
+
+    void addNewUser(UserVo user, UserRole userRole);
+
+    void updateUserId(User user);
 }

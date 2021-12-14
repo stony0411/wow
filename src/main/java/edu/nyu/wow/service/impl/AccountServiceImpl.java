@@ -1,13 +1,13 @@
 package edu.nyu.wow.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.extension.service.IService;
 import edu.nyu.wow.entity.Account;
 import edu.nyu.wow.entity.User;
+import edu.nyu.wow.enums.UserRole;
 import edu.nyu.wow.mapper.AccountMapper;
 import edu.nyu.wow.service.IAccountService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
+import edu.nyu.wow.dao.vo.UserVo;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
@@ -23,8 +23,6 @@ import java.util.Objects;
 @Service
 public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account> implements IAccountService {
 
-
-
     @Override
     public User findByUsername(String username) {
         QueryWrapper<Account> wrapper = new QueryWrapper<>();
@@ -34,6 +32,29 @@ public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account> impl
             return null;
         }
         return new User(account.getAccountName(), account.getPassword(), account.getTypeId(), account.getUserId());
+    }
+
+    @Override
+    public void addNewUser(UserVo user, UserRole userRole) {
+        Account account = Account.builder()
+                .accountName(user.getUsername())
+                .password(user.getPassword())
+                .typeId(userRole.getRoleId())
+                .build();
+        save(account);
+    }
+
+    @Override
+    public void updateUserId(User user) {
+        Account account = Account.builder()
+                .accountName(user.getUsername())
+                .password(user.getPassword())
+                .typeId(user.getRole())
+                .userId(user.getUserId())
+                .build();
+        QueryWrapper<Account> wrapper = new QueryWrapper<>();
+        wrapper.eq("account_id", user.getUserId());
+        update(account, wrapper);
     }
 
 }

@@ -1,7 +1,5 @@
-package edu.nyu.wow.dto;
+package edu.nyu.wow.dao.vo;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 
 /**
@@ -11,12 +9,7 @@ import lombok.Data;
  */
 
 @Data
-public class HospitalDto {
-
-    /**
-     * Hospital Primary key and ID
-     */
-    private Long hospitalId;
+public class HospitalVo {
 
     /**
      * The name of the hospital
@@ -26,7 +19,7 @@ public class HospitalDto {
     /**
      * The physical address of hospitals
      */
-    private String addressLine1;
+     private String addressLine1;
 
     /**
      * SECOND LINE ADDRESS

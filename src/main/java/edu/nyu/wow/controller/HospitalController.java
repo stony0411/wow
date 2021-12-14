@@ -1,12 +1,10 @@
 package edu.nyu.wow.controller;
 
-import edu.nyu.wow.bo.HospitalBo;
-import edu.nyu.wow.dto.HospitalDto;
-import edu.nyu.wow.entity.Hospital;
-import edu.nyu.wow.ibo.HospitalIbo;
+import edu.nyu.wow.dao.dto.HospitalDto;
+import edu.nyu.wow.dao.ibo.HospitalIbo;
 import edu.nyu.wow.meta.SimpleResponse;
 import edu.nyu.wow.service.IHospitalService;
-import edu.nyu.wow.vo.HospitalVo;
+import edu.nyu.wow.dao.vo.HospitalVo;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +18,7 @@ import java.util.List;
  * @Email: sw3455@nyu.edu
  */
 @RestController
-@RequestMapping("/Hospital")
+@RequestMapping("/hospital")
 public class HospitalController {
     @Autowired
     ModelMapper modelMapper;
@@ -30,7 +28,8 @@ public class HospitalController {
 
     @PostMapping("/newHospital")
     public SimpleResponse<String> newHospital(@RequestBody HospitalVo vo){
-        return hospitalService.addHospital(modelMapper.map(vo, HospitalIbo.class));
+        hospitalService.addHospital(modelMapper.map(vo, HospitalIbo.class));
+        return new SimpleResponse<>("Add a hospital successfully");
     }
 
     @GetMapping("/listHospital")

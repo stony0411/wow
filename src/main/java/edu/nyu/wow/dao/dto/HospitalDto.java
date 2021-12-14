@@ -1,10 +1,6 @@
-package edu.nyu.wow.vo;
+package edu.nyu.wow.dao.dto;
 
 import lombok.Data;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import java.math.BigDecimal;
 
 /**
  * @Author: yw5211
@@ -13,7 +9,12 @@ import java.math.BigDecimal;
  */
 
 @Data
-public class HospitalVo {
+public class HospitalDto {
+
+    /**
+     * Hospital Primary key and ID
+     */
+    private Long hospitalId;
 
     /**
      * The name of the hospital
@@ -23,7 +24,7 @@ public class HospitalVo {
     /**
      * The physical address of hospitals
      */
-     private String addressLine1;
+    private String addressLine1;
 
     /**
      * SECOND LINE ADDRESS
@@ -43,7 +44,7 @@ public class HospitalVo {
     /**
      * The zipcode of hospital
      */
-    private Integer zipcode;
+    private String zipcode;
 
     /**
      * The phone number of the hospital

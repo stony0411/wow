@@ -1,9 +1,6 @@
-package edu.nyu.wow.bo;
+package edu.nyu.wow.dao.vo;
 
 import lombok.Data;
-
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
 /**
  * @Author: sw3455
@@ -11,12 +8,7 @@ import java.time.LocalDateTime;
  * @Email: sw3455@nyu.edu
  */
 @Data
-public class PatientBo {
-    /**
-     * PRIMARY KEY AND UNIQUE ID FOR PATIENTS
-     */
-    private Integer patientId;
-
+public class PatientVo {
     /**
      * FIRST NAME OF PATIENT
      */
@@ -50,7 +42,7 @@ public class PatientBo {
     /**
      * ZIPCODE
      */
-    private Integer zipcode;
+    private String zipcode;
 
     /**
      * PATIENT PHONE NUMBER
@@ -80,20 +72,10 @@ public class PatientBo {
     /**
      * NAME OF INSURANCE PROVIDER OF PATIENT
      */
-    private String insuranceProvider;
+    private Long insuranceProvider;
 
     /**
      * INSURANCE NUMBER OF THE PATIENT
      */
     private Long insuranceNumber;
-
-    /**
-     * TIME TBL CREATED
-     */
-    private LocalDateTime tblCreatedDt;
-
-    /**
-     * LAST MODIFIED/UPDATED DATE
-     */
-    private LocalDateTime tblLastDt;
 }

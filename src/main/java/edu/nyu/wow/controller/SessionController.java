@@ -2,10 +2,11 @@ package edu.nyu.wow.controller;
 
 import edu.nyu.wow.entity.User;
 import edu.nyu.wow.enums.ResponseStatus;
+import edu.nyu.wow.enums.UserRole;
 import edu.nyu.wow.meta.RequestContext;
 import edu.nyu.wow.meta.SimpleResponse;
 import edu.nyu.wow.service.IAccountService;
-import edu.nyu.wow.vo.UserVo;
+import edu.nyu.wow.dao.vo.UserVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -40,6 +41,17 @@ public class SessionController {
         }
 
         return new SimpleResponse<>("Invalid Password", ResponseStatus.ERROR);
+    }
+
+    @PostMapping("/register")
+    public SimpleResponse<String> registerPatient(@RequestBody UserVo user, HttpSession session) {
+        User backEndUser = accountService.findByUsername(user.getUsername());
+        if (!Objects.isNull(backEndUser)) {
+            return new SimpleResponse<>("Username existed", ResponseStatus.ERROR);
+        }
+        accountService.addNewUser(user, UserRole.PATIENT);
+        login(user, session);
+        return new SimpleResponse<>("Register Successfully", ResponseStatus.SUCCESS);
     }
 
     @GetMapping("/logout")

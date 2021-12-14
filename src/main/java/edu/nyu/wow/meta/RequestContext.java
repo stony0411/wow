@@ -19,4 +19,8 @@ public class RequestContext {
     public static User getCurrentUser() {
         return (User)getCurrentRequest().getSession().getAttribute("user");
     }
+
+    public static void setCurrentUser(User user) {
+        getCurrentRequest().getSession().setAttribute("user", user);
+    }
 }

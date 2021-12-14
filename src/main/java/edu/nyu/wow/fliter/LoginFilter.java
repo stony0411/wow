@@ -32,18 +32,17 @@ public class LoginFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         // Login do not need to intercept
-        if ("/login".equals(request.getRequestURI())) {
+        if ("/login".equals(request.getRequestURI()) ||
+            "/register".equals(request.getRequestURI())) {
             filterChain.doFilter(request, response);
             return;
         }
 
-
-
         // Already Login
         User user = (User) request.getSession().getAttribute("user");
         if (user != null) {
-            System.out.println(RequestContext.getCurrentUser() + " is visiting url: " + request.getRequestURI());
             filterChain.doFilter(request, response);
+            System.out.println(RequestContext.getCurrentUser() + " is visiting url: " + request.getRequestURI());
             return;
         }
 

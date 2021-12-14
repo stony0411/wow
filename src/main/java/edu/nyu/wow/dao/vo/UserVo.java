@@ -1,4 +1,4 @@
-package edu.nyu.wow.vo;
+package edu.nyu.wow.dao.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

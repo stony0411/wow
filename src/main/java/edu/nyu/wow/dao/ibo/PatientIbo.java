@@ -1,8 +1,6 @@
-package edu.nyu.wow.ibo;
+package edu.nyu.wow.dao.ibo;
 
 import lombok.Data;
-
-import java.math.BigDecimal;
 
 /**
  * @Author: sw3455
@@ -45,7 +43,7 @@ public class PatientIbo {
     /**
      * ZIPCODE
      */
-    private Integer zipcode;
+    private String zipcode;
 
     /**
      * PATIENT PHONE NUMBER
@@ -75,7 +73,7 @@ public class PatientIbo {
     /**
      * NAME OF INSURANCE PROVIDER OF PATIENT
      */
-    private String insuranceProvider;
+    private Long insuranceProvider;
 
     /**
      * INSURANCE NUMBER OF THE PATIENT

@@ -1,7 +1,6 @@
-package edu.nyu.wow.ibo;
+package edu.nyu.wow.dao.bo;
 
-
-import lombok.*;
+import lombok.Data;
 
 /**
  * @Author: yw5211
@@ -10,7 +9,12 @@ import lombok.*;
  */
 
 @Data
-public class HospitalIbo {
+public class HospitalBo {
+
+    /**
+     * Hospital Primary key and ID
+     */
+    private Long hospitalId;
 
     /**
      * The name of the hospital
