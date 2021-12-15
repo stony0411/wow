@@ -1,9 +1,13 @@
 package edu.nyu.wow.service.impl;
 
+import edu.nyu.wow.dao.bo.AppointmentBo;
+import edu.nyu.wow.dao.ibo.AppointmentIbo;
 import edu.nyu.wow.entity.Appointment;
 import edu.nyu.wow.mapper.AppointmentMapper;
 import edu.nyu.wow.service.IAppointmentService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -12,9 +16,18 @@ import org.springframework.stereotype.Service;
  * </p>
  *
  * @author MyBatisPlusGenerator
- * @since 2021-11-24
+ * @since 2021-12-15
  */
 @Service
 public class AppointmentServiceImpl extends ServiceImpl<AppointmentMapper, Appointment> implements IAppointmentService {
+
+    @Autowired
+    ModelMapper modelMapper;
+
+    public AppointmentBo newApp(AppointmentIbo appointmentIbo) {
+        Appointment appointment = modelMapper.map(appointmentIbo, Appointment.class);
+        save(appointment);
+        return modelMapper.map(appointment, AppointmentBo.class);
+    }
 
 }

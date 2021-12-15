@@ -1,5 +1,6 @@
 package edu.nyu.wow.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.time.LocalDateTime;
@@ -14,7 +15,7 @@ import lombok.EqualsAndHashCode;
  * </p>
  *
  * @author MyBatisPlusGenerator
- * @since 2021-11-24
+ * @since 2021-12-15
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -26,14 +27,11 @@ public class Appointment implements Serializable {
     /**
      * THE PRIMARY KEY AND ID FOR APPOINTMENT
      */
-    @TableId("APT_ID")
+    @TableId(value = "APT_ID", type = IdType.AUTO)
     private Integer aptId;
 
-    /**
-     * DATE FOR APT
-     */
-    @TableField("APPOINTMENT_DATE")
-    private LocalDateTime appointmentDate;
+    @TableField("APPOINTMENT_TIME")
+    private LocalDateTime appointmentTime;
 
     /**
      * SPECIFY THE TIME FOR THE APPOINTMENT
@@ -49,6 +47,9 @@ public class Appointment implements Serializable {
 
     @TableField("REG_ID")
     private Integer regId;
+
+    @TableField("DEPT_NO")
+    private Integer deptNo;
 
     /**
      * TIME TBL CREATED

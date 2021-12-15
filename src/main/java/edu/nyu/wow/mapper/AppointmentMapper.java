@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * </p>
  *
  * @author MyBatisPlusGenerator
- * @since 2021-11-24
+ * @since 2021-12-15
  */
 public interface AppointmentMapper extends BaseMapper<Appointment> {
 
