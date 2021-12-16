@@ -1,5 +1,8 @@
-package edu.nyu.wow.dao.bo;
+package edu.nyu.wow.dao.dto;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,30 +18,23 @@ import java.util.Date;
  * </p>
  *
  * @author MyBatisPlusGenerator
- * @since 2021-12-16
+ * @since 2021-11-24
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@NoArgsConstructor
 @AllArgsConstructor
-public class RegistrationBo implements Serializable {
+@NoArgsConstructor
+public class DeptDto implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private Long regId;
-
-    private Date regDate;
-
-    private Date appointmentTime;
-
-    private String symptoms;
-
     private Long deptNo;
 
-    private Long patientId;
+    private String deptName;
 
-    private Date tblCreatedDt;
+    private String deptAddress;
 
-    private Date tblLastDt;
+    private Long deptContact;
 
+    private Long hospitalId;
 }

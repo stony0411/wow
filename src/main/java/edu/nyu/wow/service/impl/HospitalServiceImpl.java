@@ -59,4 +59,5 @@ public class HospitalServiceImpl extends ServiceImpl<HospitalMapper, Hospital> i
         List<Hospital> hospitals = list(wrapper);
         return new SimpleResponse<>(modelMapper.map(hospitals,new TypeToken<List<HospitalBo>>(){}.getType()));
     }
+
 }

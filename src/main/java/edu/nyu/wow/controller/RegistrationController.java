@@ -1,23 +1,23 @@
 package edu.nyu.wow.controller;
 
-import edu.nyu.wow.dao.bo.AppointmentBo;
+import edu.nyu.wow.dao.bo.DeptBo;
+import edu.nyu.wow.dao.bo.HospitalBo;
 import edu.nyu.wow.dao.bo.RegistrationBo;
-import edu.nyu.wow.dao.dto.AppointmentDto;
 import edu.nyu.wow.dao.dto.RegistrationDto;
-import edu.nyu.wow.dao.ibo.AppointmentIbo;
-import edu.nyu.wow.dao.vo.AppointmentVo;
-import edu.nyu.wow.entity.Appointment;
-import edu.nyu.wow.entity.Registration;
+import edu.nyu.wow.dao.ibo.RegistrationIbo;
+import edu.nyu.wow.dao.vo.RegistrationVo;
 import edu.nyu.wow.entity.User;
 import edu.nyu.wow.meta.RequestContext;
 import edu.nyu.wow.meta.SimpleResponse;
-import edu.nyu.wow.service.IAppointmentService;
+import edu.nyu.wow.service.IDeptService;
+import edu.nyu.wow.service.IHospitalService;
 import edu.nyu.wow.service.IRegistrationService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -34,33 +34,40 @@ public class RegistrationController {
     IRegistrationService registrationService;
 
     @Autowired
-    IAppointmentService appointmentService;
+    IDeptService deptService;
+
+    @Autowired
+    IHospitalService hospitalService;
 
     @Autowired
     ModelMapper modelMapper;
 
     @PostMapping("/new")
-    public SimpleResponse<AppointmentDto> newReg(@RequestBody AppointmentVo vo) {
+    public SimpleResponse<RegistrationDto> newReg(@RequestBody RegistrationVo vo) {
         User user = RequestContext.getCurrentUser();
-        RegistrationBo registrationBo = registrationService.newReg(user.getUserId());
-        AppointmentIbo appointmentIbo = modelMapper.map(vo, AppointmentIbo.class);
-        appointmentIbo.setAptId(null);
-        appointmentIbo.setRegId(registrationBo.getRegId());
-        appointmentIbo.setAppointmentTime(new Date());
-        AppointmentBo appointmentBo = appointmentService.newApp(appointmentIbo);
-        AppointmentDto appointmentDto = modelMapper.map(appointmentBo, AppointmentDto.class);
-        appointmentDto.setDeptName("add it later");
-        appointmentDto.setHospitalName("add it later");
-        return new SimpleResponse<>(appointmentDto);
+        RegistrationIbo registrationIbo = modelMapper.map(vo, RegistrationIbo.class);
+        registrationIbo.setPatientId(user.getUserId());
+        registrationIbo.setRegDate(new Date());
+        RegistrationBo registrationBo = registrationService.newReg(registrationIbo);
+        RegistrationDto registrationDto = modelMapper.map(registrationBo, RegistrationDto.class);
+        return new SimpleResponse<>(fillInNames(registrationDto));
     }
 
     @GetMapping("getMyRegList")
     public SimpleResponse<List<RegistrationDto>> getMyRegList() {
         User user = RequestContext.getCurrentUser();
-        List<RegistrationBo> registrationBos = registrationService.listByPatientId(user.getUserId());
+        List<RegistrationBo> registrationBos = registrationService.list(user.getUserId());
         List<RegistrationDto> registrationDtos = modelMapper.map(registrationBos, new TypeToken<List<RegistrationDto>>(){}.getType());
-        return new SimpleResponse<>(registrationDtos);
+        List<RegistrationDto> registrationDtos1 = new ArrayList<>();
+        registrationDtos.forEach(e -> registrationDtos1.add(fillInNames(e)));
+        return new SimpleResponse<>(registrationDtos1);
     }
 
-
+    private RegistrationDto fillInNames(RegistrationDto registrationDto) {
+        DeptBo deptBo = deptService.getById(registrationDto.getDeptNo());
+        registrationDto.setDeptName(deptBo.getDeptName());
+        HospitalBo hospitalBo = hospitalService.hospitalDetail(deptBo.getHospitalId()).getData();
+        registrationDto.setHospitalName(hospitalBo.getHospitalName());
+        return registrationDto;
+    }
 }

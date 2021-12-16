@@ -1,10 +1,10 @@
 package edu.nyu.wow.dao.dto;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -15,27 +15,29 @@ import java.util.Date;
  * </p>
  *
  * @author MyBatisPlusGenerator
- * @since 2021-12-15
+ * @since 2021-12-16
  */
 @Data
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
+@NoArgsConstructor
+@AllArgsConstructor
 public class RegistrationDto implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    /**
-     * THE PRIMARY KEY AND UNIQUE ID OF REGISTRATION
-     */
     private Long regId;
 
-    /**
-     * THE DATETIME OF REGISTRATION
-     */
     private Date regDate;
 
+    private Date appointmentTime;
+
+    private String symptoms;
+
+    private Long deptNo;
+
+    private String deptName;
+
+    private String hospitalName;
 
     private Long patientId;
 

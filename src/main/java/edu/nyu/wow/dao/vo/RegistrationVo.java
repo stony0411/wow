@@ -1,6 +1,6 @@
-
 package edu.nyu.wow.dao.vo;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -13,31 +13,21 @@ import java.util.Date;
  * </p>
  *
  * @author MyBatisPlusGenerator
- * @since 2021-12-15
+ * @since 2021-12-16
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class AppointmentVo implements Serializable {
+@TableName("REGISTRATION")
+public class RegistrationVo implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    /**
-     * THE PRIMARY KEY AND ID FOR APPOINTMENT
-     */
-    private Integer aptId;
-
     private Date appointmentTime;
 
-    /**
-     * SPECIFY THE TIME FOR THE APPOINTMENT
-     */
-    private String timeslot;
-
-    /**
-     * DESCRIBE THE REASON FOR VISITING
-     */
     private String symptoms;
 
     private Long deptNo;
+
+    private Long patientId;
 
 }

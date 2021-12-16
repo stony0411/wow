@@ -1,5 +1,6 @@
 package edu.nyu.wow.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.time.LocalDateTime;
@@ -28,8 +29,8 @@ public class Dept implements Serializable {
     /**
      * The department id within the hospital
      */
-    @TableId("DEPT_NO")
-    private Integer deptNo;
+    @TableId(value = "DEPT_NO", type = IdType.AUTO)
+    private Long deptNo;
 
     /**
      * The name of the department
@@ -50,7 +51,7 @@ public class Dept implements Serializable {
     private Long deptContact;
 
     @TableField("HOSPITAL_ID")
-    private Integer hospitalId;
+    private Long hospitalId;
 
     /**
      * TIME TBL CREATED
@@ -63,6 +64,5 @@ public class Dept implements Serializable {
      */
     @TableField("TBL_LAST_DT")
     private Date tblLastDt;
-
 
 }
