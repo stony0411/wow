@@ -31,6 +31,8 @@ public class RegistrationDto implements Serializable {
 
     private Date appointmentTime;
 
+    private String appTime;
+
     private String symptoms;
 
     private Long deptNo;

@@ -17,6 +17,7 @@ import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -68,6 +69,8 @@ public class RegistrationController {
         registrationDto.setDeptName(deptBo.getDeptName());
         HospitalBo hospitalBo = hospitalService.hospitalDetail(deptBo.getHospitalId()).getData();
         registrationDto.setHospitalName(hospitalBo.getHospitalName());
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        registrationDto.setAppTime(simpleDateFormat.format(registrationDto.getAppointmentTime()));
         return registrationDto;
     }
 }
