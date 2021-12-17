@@ -53,7 +53,7 @@ public class RegistrationController {
         return new SimpleResponse<>(fillInNames(registrationDto));
     }
 
-    @GetMapping("getMyRegList")
+    @GetMapping("/getMyRegList")
     public SimpleResponse<List<RegistrationDto>> getMyRegList() {
         User user = RequestContext.getCurrentUser();
         List<RegistrationBo> registrationBos = registrationService.list(user.getUserId());

@@ -42,6 +42,11 @@ public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account> impl
                 .accountName(user.getUsername())
                 .password(user.getPassword())
                 .typeId(userRole.getRoleId())
+                .email(user.getEmail())
+                .question1(user.getQuestion1())
+                .question2(user.getQuestion2())
+                .answer1(user.getAnswer1())
+                .answer2(user.getAnswer2())
                 .build();
         save(account);
     }

@@ -18,12 +18,12 @@ import lombok.EqualsAndHashCode;
  * </p>
  *
  * @author MyBatisPlusGenerator
- * @since 2021-11-24
+ * @since 2021-12-17
  */
 @Data
-@Builder
 @EqualsAndHashCode(callSuper = false)
 @TableName("ACCOUNT")
+@Builder
 public class Account implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -63,6 +63,21 @@ public class Account implements Serializable {
      */
     @TableField("TBL_LAST_DT")
     private Date tblLastDt;
+
+    @TableField("EMAIL")
+    private String email;
+
+    @TableField("QUESTION1")
+    private String question1;
+
+    @TableField("ANSWER1")
+    private String answer1;
+
+    @TableField("QUESTION2")
+    private String question2;
+
+    @TableField("ANSWER2")
+    private String answer2;
 
 
 }
