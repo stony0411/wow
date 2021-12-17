@@ -1,5 +1,6 @@
 package edu.nyu.wow.controller;
 
+import edu.nyu.wow.dao.dto.UserDto;
 import edu.nyu.wow.entity.User;
 import edu.nyu.wow.enums.ResponseStatus;
 import edu.nyu.wow.enums.UserRole;
@@ -68,5 +69,10 @@ public class SessionController {
         System.out.println(RequestContext.getCurrentUser() + " loged out.");
         session.removeAttribute("user");
         return new SimpleResponse<>("Logout Successfully", ResponseStatus.SUCCESS);
+    }
+
+    @GetMapping("/accountInfo")
+    public SimpleResponse<UserDto> accountInfo(HttpSession session) {
+        return new SimpleResponse<>(accountService.accountInfo());
     }
 }

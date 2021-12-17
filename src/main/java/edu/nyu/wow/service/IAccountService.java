@@ -1,5 +1,6 @@
 package edu.nyu.wow.service;
 
+import edu.nyu.wow.dao.dto.UserDto;
 import edu.nyu.wow.entity.Account;
 import com.baomidou.mybatisplus.extension.service.IService;
 import edu.nyu.wow.entity.User;
@@ -25,4 +26,6 @@ public interface IAccountService extends IService<Account> {
     boolean checkQuestions(UserVo userVo);
 
     void updatePassword(UserVo userVo);
+
+    UserDto accountInfo();
 }
