@@ -54,6 +54,15 @@ public class SessionController {
         return new SimpleResponse<>("Register Successfully", ResponseStatus.SUCCESS);
     }
 
+    @PostMapping("/changePassword")
+    public SimpleResponse<String> changePassword(@RequestBody UserVo userVo, HttpSession session) {
+        if (!accountService.checkQuestions(userVo)) {
+            return new SimpleResponse<>("Wrong answers of security question", ResponseStatus.ERROR);
+        }
+        accountService.updatePassword(userVo);
+        return new SimpleResponse<>("Password changed");
+    }
+
     @GetMapping("/logout")
     public SimpleResponse<String> logout(HttpSession session) {
         System.out.println(RequestContext.getCurrentUser() + " loged out.");

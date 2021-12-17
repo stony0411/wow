@@ -6,6 +6,7 @@ import edu.nyu.wow.entity.Account;
 import edu.nyu.wow.entity.User;
 import edu.nyu.wow.enums.UserRole;
 import edu.nyu.wow.mapper.AccountMapper;
+import edu.nyu.wow.meta.RequestContext;
 import edu.nyu.wow.service.IAccountService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import edu.nyu.wow.dao.vo.UserVo;
@@ -57,6 +58,26 @@ public class AccountServiceImpl extends ServiceImpl<AccountMapper, Account> impl
         wrapper.eq("account_name", user.getUsername());
         wrapper.set("user_id", user.getUserId());
         update(wrapper);
+    }
+
+    @Override
+    public boolean checkQuestions(UserVo userVo) {
+        QueryWrapper<Account> wrapper = new QueryWrapper<>();
+        wrapper.eq("account_name", RequestContext.getCurrentUser().getUsername());
+        Account account = getOne(wrapper);
+        if (account.getAnswer1().equals(userVo.getAnswer1()) && account.getAnswer2().equals(userVo.getAnswer2())) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public void updatePassword(UserVo userVo) {
+        QueryWrapper<Account> wrapper = new QueryWrapper<>();
+        wrapper.eq("account_name", userVo.getUsername());
+        Account account = getOne(wrapper);
+        account.setPassword(userVo.getPassword());
+        update(account, wrapper);
     }
 
 }

@@ -21,4 +21,8 @@ public interface IAccountService extends IService<Account> {
     void addNewUser(UserVo user, UserRole userRole);
 
     void updateUserId(User user);
+
+    boolean checkQuestions(UserVo userVo);
+
+    void updatePassword(UserVo userVo);
 }
