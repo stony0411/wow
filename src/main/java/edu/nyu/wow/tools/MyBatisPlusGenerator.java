@@ -7,9 +7,11 @@ import com.baomidou.mybatisplus.generator.AutoGenerator;
 import com.baomidou.mybatisplus.generator.InjectionConfig;
 import com.baomidou.mybatisplus.generator.config.*;
 import com.baomidou.mybatisplus.generator.config.po.TableInfo;
+import com.baomidou.mybatisplus.generator.config.rules.FileType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -67,12 +69,28 @@ public class MyBatisPlusGenerator {
         mpg.setPackageInfo(pc);
 
         // 自定义配置
+        // 自定义配置
         InjectionConfig cfg = new InjectionConfig() {
             @Override
             public void initMap() {
                 // to do nothing
             }
         };
+        cfg.setFileCreate((configBuilder, fileType, filePath) -> {
+            //如果是Entity则直接返回true表示写文件
+            if (fileType == FileType.ENTITY) {
+                return true;
+            }
+            //否则先判断文件是否存在
+            File file = new File(filePath);
+            boolean exist = file.exists();
+            if (!exist) {
+                file.getParentFile().mkdirs();
+            }
+            //文件不存在或者全局配置的fileOverride为true才写文件
+            return !exist || configBuilder.getGlobalConfig().isFileOverride();
+        });
+
 
         // 如果模板引擎是 freemarker
         //String templatePath = "/templates/mapper.xml.ftl";

@@ -10,6 +10,7 @@ import java.util.Date;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Value;
 
 /**
  * <p>
@@ -17,7 +18,7 @@ import lombok.EqualsAndHashCode;
  * </p>
  *
  * @author MyBatisPlusGenerator
- * @since 2021-11-24
+ * @since 2021-12-17
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -61,6 +62,9 @@ public class EmergencyContact implements Serializable {
      */
     @TableField("TBL_LAST_DT")
     private Date tblLastDt;
+
+    @TableField("IS_DELETED")
+    private Integer isDeleted;
 
 
 }

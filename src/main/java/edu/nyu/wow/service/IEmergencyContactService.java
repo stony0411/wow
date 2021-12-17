@@ -21,4 +21,6 @@ public interface IEmergencyContactService extends IService<EmergencyContact> {
     EmergencyContactBo add(EmergencyContactIbo ibo);
 
     List<EmergencyContactBo> list(Long userId);
+
+    void delete(Long contactId);
 }
